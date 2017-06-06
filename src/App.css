@@ -1,0 +1,17 @@
+.site-container {
+  margin: 75px 25%;
+}
+
+input {
+  padding: 15px;
+  margin: 15px;
+}
+
+button {
+  padding: 10px;
+  margin: 5px;
+}
+
+.hide {
+  display:none;
+}
