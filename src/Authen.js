@@ -3,12 +3,7 @@ const firebase = require('firebase');
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyBr1-dqOMLn3-z2d4q_x1Jz6hcly_dfAQ0",
-  authDomain: "login0-141bd.firebaseapp.com",
-  databaseURL: "https://login0-141bd.firebaseio.com",
-  projectId: "login0-141bd",
-  storageBucket: "login0-141bd.appspot.com",
-  messagingSenderId: "465739301603"
+  yourConfigCredentialsHere: ''
 };
 firebase.initializeApp(config);
 
