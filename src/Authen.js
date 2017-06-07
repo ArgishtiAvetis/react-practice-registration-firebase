@@ -3,7 +3,12 @@ const firebase = require('firebase');
 
 // Initialize Firebase
 var config = {
-  yourConfigCredentialsHere: ''
+    apiKey: "AIzaSyBr1-dqOMLn3-z2d4q_x1Jz6hcly_dfAQ0",
+    authDomain: "login0-141bd.firebaseapp.com",
+    databaseURL: "https://login0-141bd.firebaseio.com",
+    projectId: "login0-141bd",
+    storageBucket: "login0-141bd.appspot.com",
+    messagingSenderId: "465739301603"
 };
 firebase.initializeApp(config);
 
@@ -77,6 +82,30 @@ export default class Authen extends Component {
     this.setState({err: ''})
   }
 
+  loginGoogle() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    var promise = firebase.auth().signInWithPopup(provider);
+
+    promise
+    .then(result => {
+      var user = result.user;
+      console.log(result);
+      firebase.database().ref('users/' + user.uid).set({
+        email: user.email,
+        name: user.displayName
+      });
+    });
+
+    promise.catch(err => {
+      var msg = err.message;
+      console.log(msg);
+      this.setState({
+        err: msg
+      });
+    });
+
+  }
+
   constructor() {
     super();
 
@@ -87,6 +116,7 @@ export default class Authen extends Component {
     this.login = this.login.bind(this);
     this.signup = this.signup.bind(this);
     this.logout = this.logout.bind(this);
+    this.loginGoogle = this.loginGoogle.bind(this);
   }
   render() {
     return(
@@ -98,6 +128,7 @@ export default class Authen extends Component {
         <button onClick={this.login}>Login</button>
         <button onClick={this.signup}>Sign up</button>
         <button onClick={this.logout} id="logout" className="hide">Log out</button>
+        <button onClick={this.loginGoogle}>Sign in with Google</button>
       </div>
     )
   }
