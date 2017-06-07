@@ -1,4 +1,4 @@
-## create firebase account and enable authentication with email and password
+## create firebase account and enable authentication with email and password, Google
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
